@@ -1,11 +1,12 @@
-.navigation_container{
-    width: 100%;
-    display: flex;
-    justify-content: center;
+.navigation_container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border: 2px solid #343f40;
 }
 
-.navigation_button{
-    color: #343F40;
-    text-decoration: none;
-    margin: 5px;
+.navigation_button {
+  color: #343f40;
+  text-decoration: none;
+  margin: 5px;
 }

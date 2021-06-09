@@ -1,24 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import Movie from '../components/Movie';
+import Detail from '../components/Detail';
 import './Home.css';
 
-function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [movies, setMovies] = useState([]);
-
-  const getMovies = async () => {
-    await fetch('http://localhost:5555')
-      .then(res => res.json())
-      .then(result => {
-        setMovies(result);
-        setIsLoading(false);
-      });
-  };
-
-  useEffect(() => {
-    getMovies();
-  }, []);
+function Home({ movies, isLoading }) {
+  const [currMovie, setCurrMovie] = useState({});
 
   return (
     <section className="container">
@@ -27,21 +13,26 @@ function Home() {
           <span className="loader__text">Loading...</span>
         </div>
       ) : (
-        <div className="movies">
-          {movies.map(movie => {
-            return (
-              <Movie
-                key={movie.id}
-                id={movie.id}
-                year={movie.year}
-                title={movie.title}
-                summary={movie.summary}
-                poster={movie.medium_cover_image}
-                genres={movie.genres}
-              />
-            );
-          })}
-        </div>
+        <>
+          <Detail currMovie={currMovie} />
+          <div className="movies">
+            {movies.map((movie, idx) => {
+              return (
+                <Movie
+                  key={movie.id}
+                  id={movie.id}
+                  year={movie.year}
+                  title={movie.title}
+                  summary={movie.summary}
+                  poster={movie.medium_cover_image}
+                  genres={movie.genres}
+                  currMovie={currMovie}
+                  setCurrMovie={setCurrMovie}
+                />
+              );
+            })}
+          </div>
+        </>
       )}
     </section>
   );

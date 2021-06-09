@@ -1,19 +1,28 @@
-import React from 'react';
-import { HashRouter, Route } from 'react-router-dom';
-import About from './routes/About';
+import React, { useState, useEffect } from 'react';
 import Home from './routes/Home';
 import Navigation from './components/Navigation';
-import Detail from './routes/Detail';
 
 function App() {
+  const [movies, setMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  const getMovies = async () => {
+    await fetch('http://localhost:5555')
+      .then(res => res.json())
+      .then(result => {
+        setMovies(result);
+        setIsLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    getMovies();
+  }, []);
+
   return (
     <div className="total_container">
-      <HashRouter>
-        <Navigation />
-        <Route path="/" exact={true} component={Home} />
-        <Route path="/about" component={About} />
-        <Route path="/movie-detail" component={Detail} />
-      </HashRouter>
+      <Navigation />
+      <Home movies={movies} isLoading={isLoading} />
     </div>
   );
 }

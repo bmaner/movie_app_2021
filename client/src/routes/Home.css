@@ -29,14 +29,20 @@ body,
   font-weight: 300;
 }
 
-.movies {
+.container {
+  border: 2px solid #343f40;
   display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: wrap;
-  padding: 50px;
-  padding-top: 70px;
-  width: 80%;
+}
+
+.detail_container {
+  display: flex;
+  justify-content: center;
+  width: 50vw;
+}
+
+.movies {
+  width: 50vw;
+  padding: 20px;
 }
 
 .movies .movie {
@@ -44,9 +50,6 @@ body,
   width: 100%;
   background-color: white;
   margin-bottom: 70px;
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
   font-weight: 300;
   padding: 20px;
   border-radius: 5px;
@@ -57,7 +60,7 @@ body,
 
 .movie img {
   position: relative;
-  top: -50px;
+  /* top: -50px; */
   max-width: 150px;
   width: 100%;
   margin-right: 30px;
