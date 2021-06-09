@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
-import "./Movie.css";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import './Movie.css';
 
 function Movie({ id, year, title, summary, poster, genres }) {
   //parameter problem
@@ -9,7 +9,7 @@ function Movie({ id, year, title, summary, poster, genres }) {
     <Link
       className="movie__link"
       to={{
-        pathname: "/movie-detail",
+        pathname: '/movie-detail',
         state: {
           year: year,
           title: title,
